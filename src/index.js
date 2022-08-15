@@ -19,7 +19,7 @@ function handler(e) {
     return;
   }
   fetchCountries(searchContry)
-    .then(data => renderUserList(data))
+    .then(data => render(data))
     .catch(error => {
       if ((error = 404)) {
         Notify.failure('Oops, there is no country with that name');
@@ -27,7 +27,7 @@ function handler(e) {
     });
 }
 
-function renderUserList(data) {
+function render(data) {
   if (data.length > 10) {
     Notify.info('Too many matches found. Please enter a more specific name.');
     countryList.innerHTML = '';
@@ -51,7 +51,7 @@ function renderUserList(data) {
         <p class="country">${name.official}</p>
         <p class='info'><span>Capital: </span>${capital}</p>
         <p class='info'><span>Population: </span>${population}</p>
-        <p class='info'><span>Languages: </span>${languages}</p>`;
+        <p class='info'><span>Languages: </span>${Object.values(languages)}</p>`;
       })
       .join('');
     countryInfo.innerHTML = markup;
