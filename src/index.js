@@ -10,6 +10,7 @@ countryEl.addEventListener('input', debounce(handler, DEBOUNCE_DELAY));
 
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
+const bodyEl = document.querySelector('body')
 
 function handler(e) {
   e.preventDefault();
@@ -45,13 +46,20 @@ function render(data) {
   }
 
   if (data.length === 1) {
+    // console.log(data.flags.svg);
+    // bodyEl.style.background-image = data.flags.svg;
+
     const markup = data
       .map(({ name, flags, capital, population, languages }) => {
-        return `<img  class='img-info' src='${flags.svg}' alt='flag of ${name.official}'/>
+        return `<img  class='img-info' src='${flags.svg}' alt='flag of ${
+          name.official
+        }'/>
         <p class="country">${name.official}</p>
         <p class='info'><span>Capital: </span>${capital}</p>
         <p class='info'><span>Population: </span>${population}</p>
-        <p class='info'><span>Languages: </span>${Object.values(languages)}</p>`;
+        <p class='info'><span>Languages: </span>${Object.values(languages).join(
+          ', '
+        )}</p>`;
       })
       .join('');
     countryInfo.innerHTML = markup;
@@ -59,9 +67,8 @@ function render(data) {
   }
 }
 
+
 function clear() {
   countryList.innerHTML = '';
   countryInfo.innerHTML = '';
 }
-
-
