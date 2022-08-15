@@ -14,17 +14,17 @@ const countryInfo = document.querySelector('.country-info');
 function handler(e) {
   e.preventDefault();
   clear();
-  const searchContry = e.target.value;
-  console.log(searchContry);
-  // console.log(searchContry);
+  const searchContry = e.target.value.trim();
+  if (!searchContry) {
+    return;
+  }
   fetchCountries(searchContry)
     .then(data => renderUserList(data))
     .catch(error => {
-      if(error= 404){
-        Notify.failure("Oops, there is no country with that name");
+      if ((error = 404)) {
+        Notify.failure('Oops, there is no country with that name');
       }
-            console.log(error)});
-
+    });
 }
 
 function renderUserList(data) {
@@ -63,3 +63,5 @@ function clear() {
   countryList.innerHTML = '';
   countryInfo.innerHTML = '';
 }
+
+

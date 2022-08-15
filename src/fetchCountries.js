@@ -9,7 +9,6 @@ export function fetchCountries(searchContry) {
         throw new Error(r.status);
       }
       return r.json();
-    })
-    
+    })  
    
 }
