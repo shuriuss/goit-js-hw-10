@@ -13,8 +13,44 @@ body {
 }
 
 #search-box {
+  margin-left: 40px;
   font: inherit;
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+}
+
+
+.country-list {
+  list-style-type: none;
+  font-size: 20px;
+  }
+
+.img {
+  width: 30px;
+}
+
+.img-info{
+  width: 300px;
+}
+
+.info {
+ 
+  font-size: 20px;
+}
+
+.info span {
+  
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+.country {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.country-info{
+  margin-left: 40px;
 }
