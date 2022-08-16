@@ -22,10 +22,9 @@ function handler(e) {
   fetchCountries(searchContry)
     .then(data => render(data))
     .catch(error => {
-      if ((error = 404)) {
-        Notify.failure('Oops, there is no country with that name');
-      }
-    });
+      Notify.failure('Oops, there is no country with that name');
+  })
+
 }
 
 function render(data) {
@@ -46,9 +45,7 @@ function render(data) {
   }
 
   if (data.length === 1) {
-    // console.log(data.flags.svg);
-    // bodyEl.style.background-image = data.flags.svg;
-
+ 
     const markup = data
       .map(({ name, flags, capital, population, languages }) => {
         return `<img  class='img-info' src='${flags.svg}' alt='flag of ${
